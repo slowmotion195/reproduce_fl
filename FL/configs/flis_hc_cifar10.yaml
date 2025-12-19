@@ -1,0 +1,45 @@
+seed: 1
+
+# device
+gpu: 0              # -1 for CPU
+num_workers: 4
+pin_memory: true
+
+# dataset
+dataset: cifar10
+data_root: ./data
+partition: noniid-labeldir
+beta: 0.3
+num_users: 40
+local_view: true     # client-perspective test split
+
+# model
+model: simple-cnn
+in_ch: 3
+num_classes: 10
+
+# FL
+rounds: 200
+frac: 0.5
+local_ep: 10
+local_bs: 10
+lr: 0.01
+momentum: 0.5
+weight_decay: 0.0
+
+# clustering
+cluster_alpha: 0.45
+nsamples_shared: 2500     # shared test samples total
+shared_source: test       # test or train
+rand_cluster_size: 10     # 随机分簇每簇人数
+batch_size: 128
+test_bs: 256
+
+# eval/logging
+print_freq: 10
+save_best: true
+
+# outputs
+out_root: ./outputs/runs
+alg: compare
+trial: 1
